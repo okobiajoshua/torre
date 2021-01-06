@@ -2,7 +2,6 @@ package data
 
 // Strength Struct
 type Strength struct {
-	ID   int64  `json:"id"`
 	Name string `json:"name"`
 }
 
@@ -11,10 +10,11 @@ type Interest struct {
 	Name string `json:"name"`
 }
 
-// Organisation struct
-type Organisation struct {
-	ID   int64  `json:"id"`
-	Name string `json:"name"`
+// Organization struct
+type Organization struct {
+	ID      int64  `json:"id"`
+	Name    string `json:"name"`
+	Picture string `json:"picture"`
 }
 
 // Experience struct
@@ -22,7 +22,7 @@ type Experience struct {
 	ID               string         `json:"id"`
 	Category         string         `json:"category"`
 	Name             string         `json:"name"`
-	Organisations    []Organisation `json:"organisations"`
+	Organizations    []Organization `json:"organizations"`
 	Responsibilities []string       `json:"responsibilities"`
 	FromMonth        string         `json:"fromMonth"`
 	FromYear         string         `json:"fromYear"`
@@ -45,7 +45,7 @@ type Person struct {
 	OpenTo               []string `json:"openTo"`
 	Picture              string   `json:"picture"`
 	ProfessionalHeadline string   `json:"professionalHeadline"`
-	SubjectID            string   `json:"subjectId"`
+	SubjectID            int64    `json:"subjectId"`
 	Username             string   `json:"username"`
 	Verified             bool     `json:"verified"`
 	Weight               float64  `json:"weight"`
