@@ -23,7 +23,6 @@ func NewBioHandler(d data.Data) *Bio {
 // GetBioByUsername method
 func (b *Bio) GetBioByUsername(w http.ResponseWriter, r *http.Request) {
 	uname := strings.Trim(mux.Vars(r)["username"], " ")
-	log.Println("username: ", uname)
 	if uname == "" {
 		http.Error(w, "no username found", http.StatusBadRequest)
 		return

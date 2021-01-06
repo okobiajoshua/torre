@@ -27,6 +27,9 @@ func main() {
 	bh := handler.NewBioHandler(f)
 	s.HandleFunc("/bio/{username}", bh.GetBioByUsername).Methods(http.MethodGet)
 
+	jh := handler.NewJobHandler(f)
+	s.HandleFunc("/job/{id}", jh.GetJobByID).Methods(http.MethodGet)
+
 	srv := &http.Server{
 		Addr: "0.0.0.0:8000",
 		// Good practice to set timeouts to avoid Slowloris attacks.

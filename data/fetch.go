@@ -28,3 +28,18 @@ func (f *Fetch) GetBioDataByUsername(username string) (*BioData, error) {
 	}
 	return &bd, nil
 }
+
+// GetJobByID method
+func (f *Fetch) GetJobByID(jobID string) (*Job, error) {
+	res, err := http.Get("https://torre.co/api/opportunities/" + jobID)
+	if err != nil {
+		return nil, err
+	}
+	var job Job
+	err = json.NewDecoder(res.Body).Decode(&job)
+	defer res.Body.Close()
+	if err != nil {
+		return nil, err
+	}
+	return &job, nil
+}

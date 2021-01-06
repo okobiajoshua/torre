@@ -29,7 +29,7 @@ type Job struct {
 	ID            string         `json:"id"`
 	Objective     string         `json:"objective"`
 	Type          string         `json:"type"`
-	Organizations []Organization `json:"organisation"`
+	Organizations []Organization `json:"organizations"`
 	Locations     []string       `json:"locations"`
 	Remote        bool           `json:"remote"`
 	External      bool           `json:"external"`
@@ -37,4 +37,5 @@ type Job struct {
 	Status        string         `json:"status"`
 	Compensation  Compensation   `json:"compensation"`
 	Skills        []Skill        `json:"skills"`
+	Description   string         `json:"serpTags.description"`
 }
