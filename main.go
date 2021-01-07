@@ -30,6 +30,12 @@ func main() {
 	jh := handler.NewJobHandler(f)
 	s.HandleFunc("/job/{id}", jh.GetJobByID).Methods(http.MethodGet)
 
+	jsh := handler.NewJobSearchHandler(f)
+	s.HandleFunc("/search/job", jsh.Find).Methods(http.MethodPost)
+
+	psh := handler.NewPeopleSearchHandler(f)
+	s.HandleFunc("/search/people", psh.Find).Methods(http.MethodPost)
+
 	srv := &http.Server{
 		Addr: "0.0.0.0:8000",
 		// Good practice to set timeouts to avoid Slowloris attacks.

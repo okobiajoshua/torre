@@ -2,11 +2,17 @@ package data
 
 import "time"
 
+// Term struct
+type Term struct {
+	Term string `json:"term"`
+}
+
 // Skill Struct
 type Skill struct {
-	Name       string  `json:"name"`
-	Experience string  `json:"experience"`
-	Weight     float64 `json:"weight"`
+	Text       string  `json:"text,omitempty"`
+	Name       string  `json:"name,omitempty"`
+	Experience string  `json:"experience,omitempty"`
+	Weight     float64 `json:"weight,omitempty"`
 }
 
 // CompensationData struct
@@ -37,5 +43,15 @@ type Job struct {
 	Status        string         `json:"status"`
 	Compensation  Compensation   `json:"compensation"`
 	Skills        []Skill        `json:"skills"`
-	Description   string         `json:"serpTags.description"`
+	Description   string         `json:"description"`
+}
+
+// Jobs struct
+type Jobs struct {
+	Results []Job `json:"results"`
+}
+
+// People struct
+type People struct {
+	Results []Person `json:"results"`
 }

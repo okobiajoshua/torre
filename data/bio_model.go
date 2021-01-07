@@ -45,10 +45,10 @@ type Person struct {
 	OpenTo               []string `json:"openTo"`
 	Picture              string   `json:"picture"`
 	ProfessionalHeadline string   `json:"professionalHeadline"`
-	SubjectID            int64    `json:"subjectId"`
-	Username             string   `json:"username"`
-	Verified             bool     `json:"verified"`
-	Weight               float64  `json:"weight"`
+	// SubjectID            int64    `json:"subjectId"`
+	Username string  `json:"username"`
+	Verified bool    `json:"verified"`
+	Weight   float64 `json:"weight"`
 }
 
 // BioData constains bio-data for a user
