@@ -46,9 +46,10 @@ type Person struct {
 	Picture              string   `json:"picture"`
 	ProfessionalHeadline string   `json:"professionalHeadline"`
 	// SubjectID            int64    `json:"subjectId"`
-	Username string  `json:"username"`
-	Verified bool    `json:"verified"`
-	Weight   float64 `json:"weight"`
+	SummaryOfBio string  `json:"summaryOfBio"`
+	Username     string  `json:"username"`
+	Verified     bool    `json:"verified"`
+	Weight       float64 `json:"weight"`
 }
 
 // BioData constains bio-data for a user
