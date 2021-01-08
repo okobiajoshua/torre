@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"strings"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -35,6 +36,19 @@ func main() {
 
 	psh := handler.NewPeopleSearchHandler(f)
 	s.HandleFunc("/search/people", psh.Find).Methods(http.MethodPost)
+
+	fs := http.FileServer(http.Dir("./public"))
+	r.PathPrefix("/").Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path == "/" {
+			r.URL.Path = "/jobs.html"
+		}
+
+		if strings.Contains(r.URL.Path, ".html") {
+			r.URL.Path = `/examples` + r.URL.Path
+		}
+
+		fs.ServeHTTP(w, r)
+	})).Methods("GET")
 
 	srv := &http.Server{
 		Addr: "0.0.0.0:8000",
