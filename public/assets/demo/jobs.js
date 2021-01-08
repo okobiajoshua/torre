@@ -13,6 +13,25 @@ function loadJobs() {
     )
 }
 
+function searchJobs(skill, organization) {
+    let data = {
+        skill,
+        organization
+    };
+    let job_listing = document.querySelector("#job-listing");
+    job_listing.innerHTML = ``;
+    let iHtml = ``;
+    postData("/torre/search/job", data).then(
+        res => {
+            res.forEach(element => {
+                iHtml += renderJob(element);
+            });
+            console.log(iHtml);
+            job_listing.innerHTML = iHtml;
+        }
+    )
+}
+
 function renderJob(e) {
     return `
     <div class="col-lg-6">
@@ -55,21 +74,4 @@ function getSkills(skills) {
     })
     s.trim(' ,');
     return s;
-}
-
-
-async function postData(url = '', data = {}) {
-    const response = await fetch(url, {
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        redirect: 'follow',
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify(data)
-    });
-    return response.json(); // parses JSON response into native JavaScript objects
 }

@@ -74,6 +74,9 @@ func (f *Fetch) GetJobs(sp dto.SearchParam, page model.Page) ([]Job, error) {
 	if err != nil {
 		return nil, err
 	}
+	if j.Results == nil {
+		return []Job{}, nil
+	}
 	return j.Results, nil
 }
 
@@ -101,6 +104,9 @@ func (f *Fetch) GetPeople(sp dto.SearchParam, page model.Page) ([]Person, error)
 	defer res.Body.Close()
 	if err != nil {
 		return nil, err
+	}
+	if p.Results == nil {
+		return []Person{}, nil
 	}
 	return p.Results, nil
 }

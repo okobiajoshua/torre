@@ -151,17 +151,18 @@
                   <div class="col-sm-6 text-left" style="position: relative; top:10px;">
                     <div class="row">
                       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                        <input type="text" class="form-control search-slt" placeholder="Enter Name">
+                        <input type="text" class="form-control search-slt" placeholder="Enter Name" id="name">
                       </div>
                       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                        <input type="text" class="form-control search-slt" placeholder="Enter skill/role">
+                        <input type="text" class="form-control search-slt" placeholder="Enter skill/role" id="skill">
                       </div>
                       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                        <input type="text" class="form-control search-slt" placeholder="Enter organisation">
+                        <input type="text" class="form-control search-slt" placeholder="Enter organisation"
+                          id="organization">
                       </div>
                       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                         <button type="submit" class="btn btn-fill btn-primary form-control"
-                          style="position:relative; top:-5px;border-right:5px;"> Search </button>
+                          style="position:relative; top:-5px;border-right:5px;" id="search"> Search </button>
                       </div>
                     </div>
                   </div>
@@ -415,6 +416,13 @@
 
         $('.dark-badge').click(function () {
           $('body').removeClass('white-content');
+        });
+
+        $('#search').click(function () {
+          let name = $('#name').val();
+          let skill = $('#skill').val();
+          let organization = $('#organization').val();
+          searchPeople(name, skill, organization);
         });
 
         loadPeople();

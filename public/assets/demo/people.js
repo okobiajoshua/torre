@@ -14,6 +14,29 @@ function loadPeople() {
     )
 }
 
+function searchPeople(name, skill, organization) {
+    data = {
+        name,
+        skill,
+        organization
+    };
+
+    let job_listing = document.querySelector("#job-listing");
+    job_listing.innerHTML = ``;
+    let iHtml = ``;
+
+    postData("/torre/search/people", data).then(
+        res => {
+            console.log(res);
+            res.forEach(element => {
+                iHtml += renderProfile(element);
+            });
+            console.log(iHtml);
+            job_listing.innerHTML = iHtml;
+        }
+    )
+}
+
 function renderProfile(e) {
     return `
     <div class="col-lg-6">

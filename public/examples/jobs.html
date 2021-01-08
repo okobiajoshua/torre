@@ -153,14 +153,15 @@
                       <div class="col-lg-1 col-md-1 col-sm-12 p-0">
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-                        <input type="text" class="form-control search-slt" placeholder="Enter skill/role">
+                        <input type="text" class="form-control search-slt" placeholder="Enter skill/role" id="skill">
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-                        <input type="text" class="form-control search-slt" placeholder="Enter organisation">
+                        <input type="text" class="form-control search-slt" placeholder="Enter organisation"
+                          id="organization">
                       </div>
                       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                         <button type="submit" class="btn btn-fill btn-primary form-control"
-                          style="position:relative; top:-5px;border-right:5px;"> Search </button>
+                          style="position:relative; top:-5px;border-right:5px;" id="search"> Search </button>
                       </div>
                     </div>
                   </div>
@@ -307,6 +308,7 @@
   <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script>
   <!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  <script src="../assets/demo/request.js"></script>
   <script src="../assets/demo/jobs.js"></script>
   <script>
     $(document).ready(function () {
@@ -413,6 +415,12 @@
 
         $('.dark-badge').click(function () {
           $('body').removeClass('white-content');
+        });
+
+        $('#search').click(function () {
+          let skill = $('#skill').val();
+          let organization = $('#organization').val();
+          searchJobs(skill, organization);
         });
 
         loadJobs();

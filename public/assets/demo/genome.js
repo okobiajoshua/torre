@@ -1,4 +1,4 @@
-function getBioData(username) {
+function getBioData(username = 'okobiajoshua') {
     getData(`/torre/bio/${username}`).then(
         res => {
             console.log(res);
