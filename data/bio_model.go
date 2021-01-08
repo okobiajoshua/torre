@@ -38,6 +38,12 @@ type Location struct {
 	TimezoneOffset int64  `json:"timezoneOffset"`
 }
 
+// Link Struct for social media links
+type Link struct {
+	Name    string `json:"name"`
+	Address string `json:"address"`
+}
+
 // Person struct
 type Person struct {
 	Name                 string   `json:"name"`
@@ -47,6 +53,7 @@ type Person struct {
 	ProfessionalHeadline string   `json:"professionalHeadline"`
 	// SubjectID            int64    `json:"subjectId"`
 	SummaryOfBio string  `json:"summaryOfBio"`
+	Links        []Link  `json:"links"`
 	Username     string  `json:"username"`
 	Verified     bool    `json:"verified"`
 	Weight       float64 `json:"weight"`
