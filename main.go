@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -50,8 +51,11 @@ func main() {
 		fs.ServeHTTP(w, r)
 	})).Methods("GET")
 
+	port := os.Getenv("PORT")
+	addr := fmt.Sprintf("0.0.0.0:%s", port)
+
 	srv := &http.Server{
-		Addr: "0.0.0.0:8000",
+		Addr: addr,
 		// Good practice to set timeouts to avoid Slowloris attacks.
 		WriteTimeout: time.Second * 30,
 		ReadTimeout:  time.Second * 30,
